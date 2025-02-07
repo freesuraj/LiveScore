@@ -15,28 +15,33 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List(scores.filteredBy(searchTerm)) { score in
-                HStack {
-                    Text(score.teamOne)
-                        .multilineTextAlignment(.leading)
-                        .fontWeight(.bold)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .layoutPriority(1)
-                    
-                    Text(score.result)
-                        .multilineTextAlignment(.center)
-                        .padding()
-                        .background {
-                            RoundedRectangle(cornerRadius: 8, style: .continuous)
-                                .fill(.gray)
-                        }
-                        .layoutPriority(2)
-                    
-                    Text(score.teamTwo)
-                        .multilineTextAlignment(.trailing)
-                        .fontWeight(.bold)
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                        .layoutPriority(1)
+                NavigationLink {
+                    DetailView(score: score)
+                } label: {
+                    HStack {
+                        Text(score.teamOne)
+                            .multilineTextAlignment(.leading)
+                            .fontWeight(.bold)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .layoutPriority(1)
+                        
+                        Text(score.result)
+                            .multilineTextAlignment(.center)
+                            .padding()
+                            .background {
+                                RoundedRectangle(cornerRadius: 8, style: .continuous)
+                                    .fill(.gray)
+                            }
+                            .layoutPriority(2)
+                        
+                        Text(score.teamTwo)
+                            .multilineTextAlignment(.trailing)
+                            .fontWeight(.bold)
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            .layoutPriority(1)
+                    }
                 }
+
             }
             .navigationTitle("Scoreboard")
             .searchable(text: $searchTerm, prompt: "Search team name")
@@ -70,5 +75,18 @@ extension [LiveScore] {
     func filteredBy(_ searchText: String) -> [LiveScore] {
         guard !searchText.isEmpty else { return self }
         return self.filter { $0.teamOne.contains(searchText) || $0.teamTwo.contains(searchText) }
+    }
+}
+
+
+struct DetailView: View {
+    let score: LiveScore
+    
+    var body: some View {
+        VStack {
+            Text(score.teamOne)
+            Text(score.result)
+            Text(score.teamTwo)
+        }
     }
 }
