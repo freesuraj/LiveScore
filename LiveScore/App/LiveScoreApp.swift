@@ -11,7 +11,9 @@ import SwiftUI
 struct LiveScoreApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack {
+                FixturesView()
+            }
         }
     }
 }
