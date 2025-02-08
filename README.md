@@ -33,10 +33,7 @@ LiveScore/
 ├── Utils/
 ├── LiveScore.xcodeproj/
 ├── LiveScoreTests/
-│   └── LiveScoreTests.swift
-└── LiveScoreUITests/
-    ├── LiveScoreUITests.swift
-    └── LiveScoreUITestsLaunchTests.swift
+    └── LiveScoreTests.swift
 ```
 
 ## Installation

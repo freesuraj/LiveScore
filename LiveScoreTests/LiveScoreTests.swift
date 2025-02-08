@@ -9,11 +9,20 @@ import Testing
 @testable import LiveScore
 
 struct LiveScoreTests {
-
-    @Test func example() async throws {
-        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
+    
+    @Test("fixtures are loaded properly")
+    func loadFixtures() async throws {
+        let viewModel = await FixtureViewModel()
+        try await viewModel.fetchScores()
+        let fixtures = try #require(await viewModel.fixtures)
+        #expect(fixtures.count == 5)
     }
-
-
-
+    
+    @Test("details are loaded properly", arguments: [1])
+    func loadDetail(id: Int) async throws {
+        let viewModel = await MatchDetailViewModel(matchId: id)
+        try await viewModel.fetchDetail()
+        let totalGoalScored = try #require(await viewModel.detail?.goalTimelines)
+        #expect(totalGoalScored.count == 4)
+    }
 }
