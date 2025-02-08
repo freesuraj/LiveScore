@@ -14,19 +14,11 @@
 			remoteGlobalIDString = 4F8238AD2D56073200440E42;
 			remoteInfo = LiveScore;
 		};
-		4F8238C92D56073700440E42 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4F8238A62D56073200440E42 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4F8238AD2D56073200440E42;
-			remoteInfo = LiveScore;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4F8238AE2D56073200440E42 /* LiveScore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveScore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F8238BE2D56073700440E42 /* LiveScoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiveScoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4F8238C82D56073700440E42 /* LiveScoreUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiveScoreUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -38,11 +30,6 @@
 		4F8238C12D56073700440E42 /* LiveScoreTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = LiveScoreTests;
-			sourceTree = "<group>";
-		};
-		4F8238CB2D56073700440E42 /* LiveScoreUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = LiveScoreUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -62,13 +49,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4F8238C52D56073700440E42 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -77,7 +57,6 @@
 			children = (
 				4F8238B02D56073200440E42 /* LiveScore */,
 				4F8238C12D56073700440E42 /* LiveScoreTests */,
-				4F8238CB2D56073700440E42 /* LiveScoreUITests */,
 				4F8238AF2D56073200440E42 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -87,7 +66,6 @@
 			children = (
 				4F8238AE2D56073200440E42 /* LiveScore.app */,
 				4F8238BE2D56073700440E42 /* LiveScoreTests.xctest */,
-				4F8238C82D56073700440E42 /* LiveScoreUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -140,29 +118,6 @@
 			productReference = 4F8238BE2D56073700440E42 /* LiveScoreTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		4F8238C72D56073700440E42 /* LiveScoreUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4F8238D82D56073700440E42 /* Build configuration list for PBXNativeTarget "LiveScoreUITests" */;
-			buildPhases = (
-				4F8238C42D56073700440E42 /* Sources */,
-				4F8238C52D56073700440E42 /* Frameworks */,
-				4F8238C62D56073700440E42 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4F8238CA2D56073700440E42 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				4F8238CB2D56073700440E42 /* LiveScoreUITests */,
-			);
-			name = LiveScoreUITests;
-			packageProductDependencies = (
-			);
-			productName = LiveScoreUITests;
-			productReference = 4F8238C82D56073700440E42 /* LiveScoreUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -177,10 +132,6 @@
 						CreatedOnToolsVersion = 16.1;
 					};
 					4F8238BD2D56073700440E42 = {
-						CreatedOnToolsVersion = 16.1;
-						TestTargetID = 4F8238AD2D56073200440E42;
-					};
-					4F8238C72D56073700440E42 = {
 						CreatedOnToolsVersion = 16.1;
 						TestTargetID = 4F8238AD2D56073200440E42;
 					};
@@ -202,7 +153,6 @@
 			targets = (
 				4F8238AD2D56073200440E42 /* LiveScore */,
 				4F8238BD2D56073700440E42 /* LiveScoreTests */,
-				4F8238C72D56073700440E42 /* LiveScoreUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -216,13 +166,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		4F8238BC2D56073700440E42 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4F8238C62D56073700440E42 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -246,13 +189,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4F8238C42D56073700440E42 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -260,11 +196,6 @@
 			isa = PBXTargetDependency;
 			target = 4F8238AD2D56073200440E42 /* LiveScore */;
 			targetProxy = 4F8238BF2D56073700440E42 /* PBXContainerItemProxy */;
-		};
-		4F8238CA2D56073700440E42 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4F8238AD2D56073200440E42 /* LiveScore */;
-			targetProxy = 4F8238C92D56073700440E42 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -484,40 +415,6 @@
 			};
 			name = Release;
 		};
-		4F8238D92D56073700440E42 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9F36R98S8X;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.suraj.LiveScoreUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = LiveScore;
-			};
-			name = Debug;
-		};
-		4F8238DA2D56073700440E42 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9F36R98S8X;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.suraj.LiveScoreUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = LiveScore;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -544,15 +441,6 @@
 			buildConfigurations = (
 				4F8238D62D56073700440E42 /* Debug */,
 				4F8238D72D56073700440E42 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4F8238D82D56073700440E42 /* Build configuration list for PBXNativeTarget "LiveScoreUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4F8238D92D56073700440E42 /* Debug */,
-				4F8238DA2D56073700440E42 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
