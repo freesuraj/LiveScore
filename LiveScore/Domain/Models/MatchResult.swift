@@ -8,9 +8,9 @@
 import Foundation
 
 struct MatchResult: Codable {
-    let teams: [TeamScore]
+    let teams: [TeamInfo]
     let teamLists: [TeamList]
-    let status: String
+    let status: Status
     let matchOfficials: [MatchOfficial]
     let kickoff: Kickoff
     let id: Int
@@ -52,6 +52,10 @@ struct Event: Codable {
 struct Clock: Codable {
     let secs: Int
     let label: String
+    
+    var formattedLabel: String {
+        label.replacingOccurrences(of: "00", with: "")
+    }
 }
 
 struct EventTime: Codable {
@@ -68,6 +72,10 @@ struct Kickoff: Codable {
     var kickOffTime: String {
         Date(timeIntervalSince1970: Double(millis)).formatAsHourMinute()
     }
+    
+    var kickOffDate: String {
+        Date(timeIntervalSince1970: Double(millis)).formatAsFullDate()
+    }
 }
 
 struct Score: Codable {
@@ -80,4 +88,63 @@ struct Ground: Codable {
     let city: String
     let source: String
     let id: Int
+}
+
+
+extension MatchResult {
+    var homeTeam: TeamInfo? {
+        teams.first
+    }
+    
+    var awayTeam: TeamInfo? {
+        teams.last
+    }
+    
+    var displayStatus: String {
+        guard let homeTeam, let awayTeam else { return "--" }
+        switch status {
+        case .completed, .inProgress: return "\(homeTeam.score ?? 0) - \(awayTeam.score ?? 0)"
+        default: return kickoff.kickOffTime
+        }
+    }
+    
+    var displayableHalfTimeScore: String {
+        "HT \(halfTimeScore.homeScore) - \(halfTimeScore.awayScore)"
+    }
+    
+    var goalTimelines: [GoalTimeline] {
+        let goalEvents = events.filter{ $0.type == "G" }
+        var timelines: [GoalTimeline] = []
+        for event in goalEvents {
+            guard let eventId = event.id, let teamId = event.teamId, let playerId = event.personId, let playerName = teamLists.first(where: { $0.teamId == event.teamId })?.allPlayers.first(where: { $0.id == playerId })?.name.display else { break }
+            timelines.append(.init(id: eventId, clock: event.clock.formattedLabel, scorer: playerName, isHomeTeam: teamId == homeTeam?.team.id))
+        }
+        
+        return timelines
+    }
+    
+    var mainReferee: String? {
+        matchOfficials.filter { $0.role == "MAIN" }.first?.name.display
+    }
+    
+    var matchInfo: String {
+        var info: [String] = []
+        info.append("Kick Off: \(kickoff.kickOffTime)")
+        info.append("\(kickoff.kickOffDate)")
+        info.append("\(ground.name), \(ground.city)")
+        info.append("Attendance: \(attendance)")
+        if let mainReferee {
+            info.append("Referee: \(mainReferee)")
+        }
+        
+        return info.joined(separator: "\n")
+    }
+}
+
+
+struct GoalTimeline: Identifiable {
+    let id: Int
+    let clock: String
+    let scorer: String
+    let isHomeTeam: Bool
 }

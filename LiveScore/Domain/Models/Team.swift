@@ -12,11 +12,6 @@ struct TeamInfo: Codable {
     let score: Int?
 }
 
-struct TeamScore: Codable {
-    let team: Team
-    let score: Int
-}
-
 struct Team: Codable {
     let name: String
     let club: Club
@@ -38,6 +33,10 @@ struct TeamList: Codable {
     let lineup: [Player]
     let substitutes: [Player]
     let formation: Formation
+    
+    var allPlayers: [Player] {
+        lineup + substitutes
+    }
 }
 
 struct Player: Codable {
@@ -86,7 +85,7 @@ struct PersonName: Codable {
 
 
 extension Team {
-    var teamBadgeUrl: URL? {
+    var awayTeamadgeUrl: URL? {
         APIConfig.teamLogoURL(teamId: id)
     }
 }

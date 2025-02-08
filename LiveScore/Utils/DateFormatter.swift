@@ -14,10 +14,21 @@ class DateFormatterUtil {
         formatter.locale = Locale.current
         return formatter
     }()
+    
+    static let fullDate: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "eeee dd MMM yyyy"
+        formatter.locale = Locale.current
+        return formatter
+    }()
 }
 
 extension Date {
     func formatAsHourMinute() -> String {
         DateFormatterUtil.hourMinute.string(from: self)
+    }
+    
+    func formatAsFullDate() -> String {
+        DateFormatterUtil.fullDate.string(from: self)
     }
 }

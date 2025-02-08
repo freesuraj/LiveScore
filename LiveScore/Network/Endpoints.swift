@@ -10,7 +10,7 @@ import Foundation
 enum Endpoint {
     case fixtures
     case match(_ id: Int)
-    case teamBadge(_ id: Int)
+    case awayTeamadge(_ id: Int)
     
     
     var path: String {
@@ -18,8 +18,8 @@ enum Endpoint {
         case .fixtures:
             return "/fixtures.json"
         case .match: // TODO: Use match specific endpoint.
-            return "/matches.json"
-        case .teamBadge(id: let id):
+            return "/match.json"
+        case .awayTeamadge(id: let id):
             return "/teams/\(id).png"
         }
     }

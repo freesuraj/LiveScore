@@ -54,7 +54,7 @@ extension APIClient {
         try await request(Endpoint.fixtures)
     }
     
-    func fetchMatchDetail(_ id: Int) async throws -> [MatchResult] {
+    func fetchMatchDetail(_ id: Int) async throws -> MatchResult {
         try await request(Endpoint.match(id))
     }
 }

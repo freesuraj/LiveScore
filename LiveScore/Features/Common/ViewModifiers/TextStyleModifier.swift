@@ -7,44 +7,26 @@
 
 import SwiftUI
 
-enum ComponentType {
-    case fixtureTeamName
-    case fixtureScore(status: Status)
-    case fixtureTime
-    
-    var color: Color {
-        switch self {
-        case .fixtureTeamName: return .black
-        case .fixtureScore(let status): return status == .upcoming ? .black : .white
-        case .fixtureTime: return .gray
-        }
-    }
-    
-    var font: Font {
-        Font.system(size: 14, weight: .medium, design: .default)
-    }
-}
-
 struct TextStyleModifier: ViewModifier {
-    let componentType: ComponentType
+    let style: TextComponentStyle
     
     @ViewBuilder
     func body(content: Content) -> some View {
-        switch componentType {
+        switch style {
         case .fixtureScore( let status):
-            content.foregroundColor(componentType.color)
-                .font(componentType.font)
+            content.foregroundColor(style.color)
+                .font(style.font)
                 .padding()
                 .bordered(cornerRadius: 8, backgroundColor: status.backgroundColor)
         default:
-                content.foregroundColor(componentType.color)
-                    .font(componentType.font)
+                content.foregroundColor(style.color)
+                    .font(style.font)
         }
     }
 }
 
 extension View {
-    func textStyled(componentType: ComponentType) -> some View {
-        modifier(TextStyleModifier(componentType: componentType))
+    func textStyled(style: TextComponentStyle) -> some View {
+        modifier(TextStyleModifier(style: style))
     }
 }

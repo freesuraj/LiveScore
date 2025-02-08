@@ -17,18 +17,23 @@ struct Fixture: Codable, Identifiable {
     let clock: Clock?
     let goals: [Goal]?
     
-    var teamA: TeamInfo? {
+    var homeTeam: TeamInfo? {
         teams.first
     }
     
-    var teamB: TeamInfo? {
+    var awayTeam: TeamInfo? {
         teams.last
     }
     
+    var title: String {
+        guard let homeTeam, let awayTeam else { return "--" }
+        return "\(homeTeam.team.club.abbr) vs \(awayTeam.team.club.abbr)"
+    }
+    
     var displayStatus: String {
-        guard let teamA, let teamB else { return "--" }
+        guard let homeTeam, let awayTeam else { return "--" }
         switch status {
-        case .completed, .inProgress: return "\(teamA.score ?? 0) : \(teamB.score ?? 0)"
+        case .completed, .inProgress: return "\(homeTeam.score ?? 0) - \(awayTeam.score ?? 0)"
         default: return kickoff.kickOffTime
         }
     }

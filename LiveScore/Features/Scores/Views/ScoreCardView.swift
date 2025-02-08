@@ -13,7 +13,7 @@ struct ScoreCardView: View {
     @Binding var selected: Bool
     
     private func teamLogo(_ team: Team) -> some View {
-        ResizableAsyncImageView(url: team.teamBadgeUrl, width: 20, height: 20, contentMode: .fit)
+        ResizableAsyncImageView(url: team.awayTeamadgeUrl, width: 20, height: 20, contentMode: .fit)
     }
     private func teamCard(_ team: Team, isHomeTeam: Bool) -> some View {
         HStack {
@@ -21,7 +21,7 @@ struct ScoreCardView: View {
                 teamLogo(team)
             }
             Text(team.name)
-                .textStyled(componentType: .fixtureTeamName)
+                .textStyled(style: .fixtureTeamName)
                 .frame(maxWidth: .infinity, alignment: isHomeTeam ? .leading : .trailing)
                 .layoutPriority(1)
             if isHomeTeam {
@@ -31,21 +31,25 @@ struct ScoreCardView: View {
     }
     
     @ViewBuilder
+    fileprivate func fixtureStatus(_ fixture: Fixture) -> some View {
+        Text(fixture.displayStatus)
+            .multilineTextAlignment(.center)
+            .textStyled(style: .fixtureScore(status: fixture.status))
+            .layoutPriority(2)
+            .padding(.horizontal, 10)
+    }
+    
     var body: some View {
-        if let teamA = fixture.teamA, let teamB = fixture.teamB {
+        if let homeTeam = fixture.homeTeam, let awayTeam = fixture.awayTeam {
             VStack {
                 HStack {
-                    teamCard(teamA.team, isHomeTeam: true)
-                    Text(fixture.displayStatus)
-                        .multilineTextAlignment(.center)
-                        .textStyled(componentType: .fixtureScore(status: fixture.status))
-                        .layoutPriority(2)
-                        .padding(.horizontal, 10)
-                    teamCard(teamB.team, isHomeTeam: false)
+                    teamCard(homeTeam.team, isHomeTeam: true)
+                    fixtureStatus(fixture)
+                    teamCard(awayTeam.team, isHomeTeam: false)
                 }
                 if fixture.status == .inProgress, let label = fixture.clock?.label {
                     Text(label)
-                        .textStyled(componentType: .fixtureTime)
+                        .textStyled(style: .fixtureTime)
                 }
             }
             .padding()

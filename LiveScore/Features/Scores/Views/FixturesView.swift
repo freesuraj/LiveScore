@@ -31,7 +31,7 @@ struct FixturesView: View {
                     LazyVStack {
                         ForEach(viewModel.fixtures.filteredBy(searchTerm)) { fixture in
                             NavigationLink {
-                                MatchDetailView(score: fixture)
+                                MatchDetailView(fixture)
                             } label: {
                                 ScoreCardView(fixture: fixture,
                                               selected: Binding(get: {
