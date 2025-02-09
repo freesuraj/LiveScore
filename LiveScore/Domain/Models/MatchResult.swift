@@ -70,11 +70,11 @@ struct Kickoff: Codable {
     let label: String
     
     var kickOffTime: String {
-        Date(timeIntervalSince1970: Double(millis)).formatAsHourMinute()
+        Date(timeIntervalSince1970: Double(millis / 1000)).formatAsHourMinute()
     }
     
     var kickOffDate: String {
-        Date(timeIntervalSince1970: Double(millis)).formatAsFullDate()
+        Date(timeIntervalSince1970: Double(millis / 1000)).formatAsFullDate()
     }
 }
 

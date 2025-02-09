@@ -17,7 +17,7 @@ class DateFormatterUtil {
     
     static let fullDate: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "eeee dd MMM yyyy"
+        formatter.dateFormat = "eeee dd MMM YYYY"
         formatter.locale = Locale.current
         return formatter
     }()
