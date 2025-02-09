@@ -13,7 +13,7 @@ struct ScoreCardView: View {
     @Binding var selected: Bool
     
     private func teamLogo(_ team: Team) -> some View {
-        ResizableAsyncImageView(url: team.awayTeamadgeUrl, width: 20, height: 20, contentMode: .fit)
+        ResizableAsyncImageView(url: team.teamBadgeUrl, width: 20, height: 20, contentMode: .fit)
     }
     private func teamCard(_ team: Team, isHomeTeam: Bool) -> some View {
         HStack {

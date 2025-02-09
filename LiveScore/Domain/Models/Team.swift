@@ -85,7 +85,7 @@ struct PersonName: Codable {
 
 
 extension Team {
-    var awayTeamadgeUrl: URL? {
+    var teamBadgeUrl: URL? {
         APIConfig.teamLogoURL(teamId: id)
     }
 }

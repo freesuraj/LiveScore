@@ -140,11 +140,3 @@ extension MatchResult {
         return info.joined(separator: "\n")
     }
 }
-
-
-struct GoalTimeline: Identifiable {
-    let id: Int
-    let clock: String
-    let scorer: String
-    let isHomeTeam: Bool
-}

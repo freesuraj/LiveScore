@@ -20,7 +20,7 @@ struct MatchDetailView: View {
     }
     
     private func teamLogo(_ team: Team) -> some View {
-        ResizableAsyncImageView(url: team.awayTeamadgeUrl, width: 40, height: 40, contentMode: .fit)
+        ResizableAsyncImageView(url: team.teamBadgeUrl, width: 40, height: 40, contentMode: .fit)
     }
     
     private func clubCard(_ team: Team, isHomeTeam: Bool) -> some View {

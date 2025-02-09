@@ -9,12 +9,19 @@ import SwiftUI
 
 @MainActor
 @Observable class FixtureViewModel {
+    
+    private let apiClient: APIClient
+    
+    init(apiClient: APIClient = .init()) {
+        self.apiClient = apiClient
+    }
+    
     var isLoading: Bool = false
     var fixtures: [Fixture] = []
     
     func fetchScores() async throws {
         isLoading = true
-        fixtures = try await APIClient().fetchFixtures()
+        fixtures = try await apiClient.fetchFixtures()
         isLoading = false
     }
 }

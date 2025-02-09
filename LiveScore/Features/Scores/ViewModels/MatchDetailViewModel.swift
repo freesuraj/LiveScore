@@ -14,11 +14,14 @@ import SwiftUI
     
     private var matchId: Int
     
-    init(matchId: Int) {
+    private let apiClient: APIClient
+    
+    init(matchId: Int, apiClient: APIClient = .init()) {
         self.matchId = matchId
+        self.apiClient = apiClient
     }
     
     func fetchDetail() async throws {
-        detail = try await APIClient().fetchMatchDetail(matchId)
+        detail = try await apiClient.fetchMatchDetail(matchId)
     }
 }

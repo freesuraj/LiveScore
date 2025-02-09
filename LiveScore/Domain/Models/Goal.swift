@@ -15,3 +15,10 @@ struct Goal: Codable {
     let type: String
     let description: String
 }
+
+struct GoalTimeline: Identifiable {
+    let id: Int
+    let clock: String
+    let scorer: String
+    let isHomeTeam: Bool
+}
