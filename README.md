@@ -67,3 +67,11 @@ LiveScore/
 - The app assumes that the remote API is available and provides the necessary endpoints for fetching fixture data.
 - The app assumes that the user has an active internet connection to fetch live scores and match details.
 - The app assumes that the data returned by the API is in the expected format and contains all required fields.
+
+## Screenshots
+
+### Fixtures
+<img src="Resources/fixtures.png" alt="Fixtures" width="400"/>
+
+### Detail
+<img src="Resources/detail.png" alt="Detail" width="400"/>
